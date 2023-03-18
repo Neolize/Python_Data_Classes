@@ -6,4 +6,4 @@ while number.isdigit() is False:
     number = input("Enter a number to calculate the factorial: ")
 
 print(f"Factorial of {number} is {fact(int(number))}")
-print("End")
+print(f"The square of {number} is {int(number) ** 2}")
