@@ -1,3 +1,7 @@
+from typing import Union
+from dataclasses import dataclass, field
+
+
 class Toy:
     def __init__(self, name, weight, price):
         self.name = name
@@ -8,6 +12,17 @@ class Toy:
         return f"Toy: name: {self.name}, weight: {self.weight}, price: {self.price}"
 
 
+@dataclass
+class ToyData:
+    name: str = "Nameless"
+    weight: Union[float, int] = 0
+    price: float = 0.0
+    materials: list = field(default_factory=list)
+
+
 if __name__ == "__main__":
-    toy = Toy("Hedgehog", 0.7, 500)
-    print(toy)
+    toy = Toy("Hedgehog", 0.7, 500.0)
+    toy_data = ToyData("Soldier", 1.1, 1200.0)
+    toy_data.materials.append("iron")
+    toy_without_data = ToyData()
+    print(toy, toy_data, toy_without_data, sep="\n")
