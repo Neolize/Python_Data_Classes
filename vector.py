@@ -21,7 +21,7 @@ class Vector3D:
 
     def multiply_length_by_given_number(self, number: int) -> Union[int, float]:
         if not isinstance(number, int):
-            print(f"The function accepts integers but got a float number: {number} instead")
+            print(f"The function may accept only integer numbers but got {type(number)} instead")
             return 0
         return self.length * number
 
@@ -38,4 +38,4 @@ if __name__ == "__main__":
     print(first_vector == second_vector)
     print(second_vector > third_vector)
     print(first_vector.compare_lengths(second_vector))
-    print(f"New length: {second_vector.multiply_length_by_given_number(3)}")
+    print(f"New length: {second_vector.multiply_length_by_given_number(7)}")
