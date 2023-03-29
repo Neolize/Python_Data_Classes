@@ -10,9 +10,12 @@ class Vector3D:
     calc_length: InitVar[bool] = True
     length: float = field(init=False, repr=False, compare=False, default=0)
 
-    def __post_init__(self, calc_length: bool):
+    def __post_init__(self, calc_length: bool) -> None:
         if calc_length:
             self.length = (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
+
+    def recalculate_length(self) -> None:
+        self.length = (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
 
     def compare_lengths(self, other_vector: 'Vector3D') -> str:
         if self.length == other_vector.length:
