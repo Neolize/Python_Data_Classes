@@ -42,3 +42,10 @@ if __name__ == "__main__":
     print(second_vector > third_vector)
     print(first_vector.compare_lengths(second_vector))
     print(f"New length: {second_vector.multiply_length_by_given_number(7)}")
+
+    print(first_vector.x)
+    print(first_vector.length)
+    first_vector.x = 10
+    first_vector.recalculate_length()
+    print(first_vector.x)
+    print(first_vector.length)
