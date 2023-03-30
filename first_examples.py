@@ -28,6 +28,6 @@ if __name__ == "__main__":
     print(toy, toy_data, toy_without_data, sep="\n")
 
     print(toy_data > toy_without_data)
-    toy_without_data.price = 1250.0
+    toy_without_data.price = 1500.0
     print(f"Toy data: {toy_data.price}, toy without data: {toy_without_data.price}")
     print(toy_data > toy_without_data, toy_data == toy_without_data, toy_data < toy_without_data)
