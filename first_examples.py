@@ -12,12 +12,12 @@ class Toy:
         return f"Toy: name: {self.name}, weight: {self.weight}, price: {self.price}"
 
 
-@dataclass
+@dataclass(order=True)
 class ToyData:
-    name: str = "Nameless"
-    weight: Union[float, int] = 0
+    name: str = field(compare=False, default="Nameless")
+    weight: Union[float, int] = field(compare=False, default=0)
     price: float = 0.0
-    materials: list = field(default_factory=list)
+    materials: list = field(compare=False, default_factory=list)
 
 
 if __name__ == "__main__":
@@ -26,3 +26,8 @@ if __name__ == "__main__":
     toy_data.materials.append("iron")
     toy_without_data = ToyData()
     print(toy, toy_data, toy_without_data, sep="\n")
+
+    print(toy_data > toy_without_data)
+    toy_without_data.price = 1250.0
+    print(f"Toy data: {toy_data.price}, toy without data: {toy_without_data.price}")
+    print(toy_data > toy_without_data, toy_data == toy_without_data, toy_data < toy_without_data)
