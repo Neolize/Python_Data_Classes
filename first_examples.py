@@ -17,7 +17,7 @@ class ToyData:
     name: str = field(compare=False, default="Nameless")
     weight: Union[float, int] = field(compare=False, default=0)
     price: float = 0.0
-    materials: list = field(default_factory=list)
+    materials: list = field(compare=False, default_factory=list)
 
 
 if __name__ == "__main__":
@@ -30,4 +30,4 @@ if __name__ == "__main__":
     print(toy_data > toy_without_data)
     toy_without_data.price = 1500.0
     print(f"Toy data: {toy_data.price}, toy without data: {toy_without_data.price}")
-    print(toy_data > toy_without_data)
+    print(toy_data > toy_without_data, toy_data == toy_without_data, toy_data < toy_without_data)
