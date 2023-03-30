@@ -29,14 +29,25 @@ class Vector3D:
         return self.length * number
 
 
+def check_args(vectors) -> bool:
+    all_vectors = map(lambda item: isinstance(item, Vector3D), vectors)
+    return all(all_vectors)
+
+
+def print_vector_information(*args: Vector3D) -> None:
+    if check_args(args):
+        for vector in args:
+            print(f"{vector}, length={vector.length}")
+    else:
+        print("Passed arguments weren't 'Vector3D' class instances")
+
+
 if __name__ == "__main__":
     first_vector = Vector3D(3, 6, 5)
     second_vector = Vector3D(3, 6, 2)
     third_vector = Vector3D(10, 6, 7, calc_length=False)
 
-    print(f"{first_vector}, length={first_vector.length}")
-    print(f"{second_vector}, length={second_vector.length}")
-    print(f"{third_vector}, length={third_vector.length}")
+    print_vector_information(first_vector, second_vector, third_vector)
 
     print(first_vector == second_vector)
     print(second_vector > third_vector)
