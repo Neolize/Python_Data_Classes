@@ -30,8 +30,7 @@ class Vector3D:
 
 
 def check_args(vectors) -> bool:
-    all_vectors = map(lambda item: isinstance(item, Vector3D), vectors)
-    return all(all_vectors)
+    return all(map(lambda vector: isinstance(vector, Vector3D), vectors))
 
 
 def print_vector_information(*args: Vector3D) -> None:
@@ -47,7 +46,7 @@ if __name__ == "__main__":
     second_vector = Vector3D(3, 6, 2)
     third_vector = Vector3D(10, 6, 7, calc_length=False)
 
-    print_vector_information(first_vector, second_vector, third_vector)
+    print(print_vector_information(first_vector, second_vector, third_vector))
 
     print(first_vector == second_vector)
     print(second_vector > third_vector)
