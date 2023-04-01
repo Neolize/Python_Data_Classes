@@ -15,14 +15,14 @@ class TestArray(unittest.TestCase):
 
 class TestToy(unittest.TestCase):
 
-    def test_toy_instance_return_information(self):
+    def test_toy_instance_returned_information(self):
         toy_instance = first_examples.Toy("Clown", 1.5, 1100.0)
 
         self.assertEqual(toy_instance.name, "Clown")
         self.assertEqual(toy_instance.weight, 1.5)
         self.assertEqual(toy_instance.price, 1100.0)
 
-    def test_toy_return_types(self):
+    def test_toy_instance_returned_types(self):
         first_toy_instance = first_examples.Toy("Ball", 3, 782.5)
         second_toy_instance = first_examples.Toy("Knight", 0.3, 350)
 
@@ -34,7 +34,7 @@ class TestToy(unittest.TestCase):
 
 class TestToyData(unittest.TestCase):
 
-    def test_toy_data_instance_return_information(self):
+    def test_toy_data_instance_returned_information(self):
         first_toy_data_instance = first_examples.ToyData("Dinosaur", 0.3, 293, ["plastic"])
         second_toy_data_instance = first_examples.ToyData()
 
@@ -48,7 +48,7 @@ class TestToyData(unittest.TestCase):
         self.assertEqual(second_toy_data_instance.price, 0)
         self.assertEqual(second_toy_data_instance.materials, [])
 
-    def test_toy_data_return_types(self):
+    def test_toy_data_instance_returned_types(self):
         first_toy_data_instance = first_examples.ToyData("Car", 1.1, 461.7, ["iron", "glass"])
         second_toy_data_instance = first_examples.ToyData()
 
