@@ -1,7 +1,10 @@
+"""Tests for explore_common_mistakes.py, first_example.py and vector.py files"""
+
 import unittest
 
 import explore_common_mistakes
 import first_examples
+import vector
 
 
 class TestArray(unittest.TestCase):
@@ -73,6 +76,70 @@ class TestToyData(unittest.TestCase):
 
         first_toy_data_instance.price = 3500
         self.assertEqual(first_toy_data_instance, second_toy_data_instance)
+
+
+class TestVector3D(unittest.TestCase):
+
+    def test_vector3D_instance_returned_information(self):
+        first_vector_instance = vector.Vector3D(2, 3, 4, calc_length=False)
+        second_vector_instance = vector.Vector3D(3, 6, 2)
+        self.assertEqual(first_vector_instance.x, 2)
+        self.assertEqual(first_vector_instance.y, 3)
+        self.assertEqual(first_vector_instance.z, 4)
+        self.assertEqual(first_vector_instance.length, 0)
+
+        self.assertEqual(second_vector_instance.x, 3)
+        self.assertEqual(second_vector_instance.y, 6)
+        self.assertEqual(second_vector_instance.z, 2)
+        self.assertEqual(second_vector_instance.length, 7.0)
+
+    def test_vector3D_instance_returned_types(self):
+        first_vector_instance = vector.Vector3D(3, 2, 4, calc_length=False)
+        second_vector_instance = vector.Vector3D(1, 6, 2)
+
+        self.assertIsInstance(first_vector_instance.x, int)
+        self.assertIsInstance(first_vector_instance.y, int)
+        self.assertIsInstance(first_vector_instance.z, int)
+        self.assertIsInstance(first_vector_instance.length, (int, float))
+
+        self.assertIsInstance(second_vector_instance.x, int)
+        self.assertIsInstance(second_vector_instance.y, int)
+        self.assertIsInstance(second_vector_instance.z, int)
+        self.assertIsInstance(second_vector_instance.length, (int, float))
+
+    def test_vector3D_comparing_instances(self):
+        first_vector_instance = vector.Vector3D(7, 8, 4)
+        second_vector_instance = vector.Vector3D(4, 5, 1, calc_length=False)
+        self.assertGreater(first_vector_instance, second_vector_instance)
+
+        second_vector_instance.x = 10
+        self.assertLess(first_vector_instance, second_vector_instance)
+
+        first_vector_instance.x = 10
+        self.assertGreater(first_vector_instance, second_vector_instance)
+
+    def test_vector3D_recalculate_length_method(self):
+        first_vector_instance = vector.Vector3D(3, 6, 2)
+        self.assertEqual(first_vector_instance.length, 7)
+
+        first_vector_instance.x, first_vector_instance.y, first_vector_instance.z = 4, 6, 12
+        first_vector_instance.recalculate_length()
+        self.assertEqual(first_vector_instance.length, 14)
+
+    def test_vector3D_compare_lengths_method(self):
+        first_vector_instance = vector.Vector3D(3, 2, 7)
+        second_vector_instance = vector.Vector3D(4, 9, 7)
+        self.assertEqual(first_vector_instance.compare_lengths(second_vector_instance), "Lengths aren't equal")
+
+        first_vector_instance.x, first_vector_instance.y = 4, 9
+        first_vector_instance.recalculate_length()
+        self.assertEqual(first_vector_instance.compare_lengths(second_vector_instance), "Lengths are equal")
+
+    def test_vector3D_multiply_length_by_given_number_method(self):
+        vector_instance = vector.Vector3D(3, 6, 2)
+        self.assertEqual(vector_instance.multiply_length_by_given_number(8), 56)
+        self.assertEqual(vector_instance.multiply_length_by_given_number(0), 0)
+        self.assertEqual(vector_instance.multiply_length_by_given_number("number"), 0)
 
 
 if __name__ == "__main__":

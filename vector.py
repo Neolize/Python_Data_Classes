@@ -20,7 +20,7 @@ class Vector3D:
     def compare_lengths(self, other_vector: 'Vector3D') -> str:
         if self.length == other_vector.length:
             return "Lengths are equal"
-        return "Lengths aren't equal."
+        return "Lengths aren't equal"
 
     def multiply_length_by_given_number(self, number: int) -> Union[int, float]:
         if not isinstance(number, int):
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     second_vector = Vector3D(3, 6, 2)
     third_vector = Vector3D(10, 6, 7, calc_length=False)
 
-    print(print_vector_information(first_vector, second_vector, third_vector))
+    print_vector_information(first_vector, second_vector, third_vector)
 
     print(first_vector == second_vector)
     print(second_vector > third_vector)
